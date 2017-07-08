@@ -1,0 +1,15 @@
+{
+  "name": "agenda",
+  "version": "1.0.0",
+  "description": "Projeto de agenda de contatos para aprender node + mongo + express + angular (MEAN)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm app.js"
+  },
+  "author": "Mauker Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
