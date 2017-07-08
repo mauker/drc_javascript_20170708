@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Formulário</title>
+	
+	
+	<style>
+		.container{
+		    display: flex;
+		    justify-content: center;
+		}
+		form {
+	        display: flex;
+		    flex-direction: column;
+		    align-self: center;
+		    align-items: flex-end;
+
+		}
+		input{
+		    width: 350px;
+		}
+		input.multiplo {
+		    width: 322px;
+		}
+		.row{
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="container">
+		<form style="margin: 15px">
+		  <div class="row">
+		      <label for="first_name">First name:</label>
+			  <input type="text" name="first_name" placeholder="Insira seu nome">	
+		  </div>
+		  
+		  <div class="row">
+			  <label for="last_name">Last name:</label>
+			  <input type="text" name="last_name" placeholder="Insira seu sobrenome">
+		  </div>
+		  <div class="row">
+			<label for="age">Age:</label>
+		  	<input type="number" name="age" maxlength="3" placeholder="Fala a verdade">
+			
+		  </div>
+		  <div class="row">
+			  <label for="emails">email:</label>
+			  <input class="multiplo" type="email" name="emails" placeholder="Insira seu email">
+			  <button>+</button>
+		  </div>
+		  <div class="row">
+			  <label for="phones">Phone (1):</label>
+			  <input class="multiplo" type="text" name="phones" placeholder="Insira o DDD">
+			  <button>+</button>
+		  </div>
+		  <div class="row">
+		  	<button type="submit" onclick="alert('Hein Viado')" style="background-color: pink">Enviar</button>
+		  </div>
+		</form>
+	</div>
+
+</body>
+</html>
