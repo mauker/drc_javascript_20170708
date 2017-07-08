@@ -26,41 +26,58 @@
 		.row{
 			padding: 5px;
 		}
+		body {
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		}
 	</style>
 </head>
-<body>
-	
-	<div class="container">
-		<form style="margin: 15px">
+<body ng-app="myApp" ng-controller="FormCtrl">
+		<h1>{{mensagem}}</h1>
+	<div class="container" > 
+		
+		<form style="margin: 15px" ng-model="contact" ng-submit="enviado(contact)">
 		  <div class="row">
 		      <label for="first_name">First name:</label>
-			  <input type="text" name="first_name" placeholder="Insira seu nome">	
+			  <input type="text" name="first_name" ng-model="contact.first_name" placeholder="Insira seu nome">	
 		  </div>
 		  
 		  <div class="row">
 			  <label for="last_name">Last name:</label>
-			  <input type="text" name="last_name" placeholder="Insira seu sobrenome">
+			  <input type="text" name="last_name" ng-model="contact.last_name" placeholder="Insira seu sobrenome">
 		  </div>
 		  <div class="row">
 			<label for="age">Age:</label>
-		  	<input type="number" name="age" maxlength="3" placeholder="Fala a verdade">
+		  	<input type="number" name="age" ng-model="contact.age" maxlength="3" placeholder="Fala a verdade">
 			
 		  </div>
-		  <div class="row">
-			  <label for="emails">email:</label>
-			  <input class="multiplo" type="email" name="emails" placeholder="Insira seu email">
-			  <button>+</button>
+		  <div class="row" ng-repeat="email in contact.emailsContainer">
+			  <label ng-if="$index == 0" for="emails">email:</label>
+			  <input ng-class="{'multiplo': $index == 0 }" type="email" name="emails" ng-model="email.value" placeholder="Insira seu email" ng-value="email.value">
+			  <button ng-if="$index == 0" type="button" ng-click="appendEmail()">+</button>
 		  </div>
-		  <div class="row">
-			  <label for="phones">Phone (1):</label>
-			  <input class="multiplo" type="text" name="phones" placeholder="Insira o DDD">
-			  <button>+</button>
+		  <div class="row" ng-repeat="phone in contact.phonesContainer">
+			  <label ng-if="$index == 0" for="phones">Phone (1):</label>
+			  <input ng-class="{'multiplo': $index == 0 }" type="text" name="phones" ng-model="phone.value" placeholder="Insira o DDD" ng-value="phone.value">
+			  <button ng-if="$index == 0" type="button" ng-click="appendPhone()">+</button>
 		  </div>
+		   
 		  <div class="row">
-		  	<button type="submit" onclick="alert('Hein Viado')" style="background-color: pink">Enviar</button>
+		  	<input type="submit"  value="Enviar" style="background-color: pink" />
 		  </div>
 		</form>
-	</div>
 
+	</div>
+	<div class="contacts">
+		<ul>
+			<li ng-repeat="contact in contacts" >
+				{{contact.first_name}} <button ng-click="editContact(contact)"> edit</button>  <button ng-click="deleteContact(contact)"> delete</button>
+			</li>
+		</ul>
+	</div>
+	
+	<script src="./bower_components/angular/angular.min.js"></script>
+	<script src="./js/app.js"></script>
 </body>
 </html>

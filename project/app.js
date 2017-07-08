@@ -21,15 +21,8 @@ var contactModel = require("./api/Contact");
 app.use("/api", contactModel);
 
 
-//vamos criar nossas chamadas de GET e POST e Etc.:
-app.get("/", function (req, res) {
-	
-	res.send("<h1>WELCOME TO EXPRESS</h1>");
-
-})
-
-
-
+//definimos o local da pasta publica
+app.use(express.static(__dirname + '/public'));  
 
 
 //vamos start o servidor
